@@ -16,61 +16,54 @@ describe('Shopping Cart',() => {
   })
 
   it('Adds a product to the cart',() => {
-    return cart.add(products.apple)
-      .then(() => {
-        expect(cart.items[products.apple.id]).to.eql(products.apple)
-      })
+    cart.add(products.apple)
+    expect(cart.items[products.apple.id]).to.eql(products.apple)
   })
 
   it('Adds multiple quantities of the same product',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.apple)])
-      .then(() => {
-        expect(cart.items[products.apple.id].qty).to.eql(2)
-      })
+    cart.add(products.apple)
+    cart.add(products.apple)
+    expect(cart.items[products.apple.id].qty).to.eql(2)
   })
 
   it('Adds different products',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.pear)])
-      .then(() => {
-        expect(cart.items[products.apple.id].qty).to.eql(1)
-        expect(cart.items[products.pear.id].qty).to.eql(1)
-      })
+    cart.add(products.apple)
+    cart.add(products.pear)
+    expect(cart.items[products.apple.id].qty).to.eql(1)
+    expect(cart.items[products.pear.id].qty).to.eql(1)
   })
 
   it('Calculates total items in the cart',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.pear),cart.add(products.pear)])
-      .then(() => {
-        expect(cart.count()).to.eql(3)
-      })
+    cart.add(products.apple)
+    cart.add(products.pear)
+    cart.add(products.pear)
+    expect(cart.count()).to.eql(3)
   })
 
   it('Calculates total cost for the items in the cart',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.pear),cart.add(products.pear)])
-      .then(() => {
-        expect(cart.total()).to.eql(6.99)
-      })
+    cart.add(products.apple)
+    cart.add(products.pear)
+    cart.add(products.pear)
+    expect(cart.total()).to.eql(6.99)
   })
 
   it('Returns the items as an array',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.pear)])
-      .then(() => {
-        expect(cart.getItems().length).to.eql(2)
-      })
+    cart.add(products.apple)
+    cart.add(products.pear)
+    expect(cart.getItems().length).to.eql(2)
   })
 
   it('Removes a product',() => {
-    return Promise.all([cart.add(products.apple),cart.add(products.pear),cart.remove(products.apple)])
-      .then(() => {
-        expect(cart.count()).to.eql(1)
-      })
+    cart.add(products.apple)
+    cart.add(products.pear)
+    cart.remove(products.apple)
+    expect(cart.count()).to.eql(1)
   })
 
   it('Resets',() => {
-    return Promise.all([cart.add(products.apple)])
-      .then(() => {
-        cart.reset()
-        expect(cart.count()).to.eql(0)
-      })
+    cart.add(products.apple)
+    cart.reset()
+    expect(cart.count()).to.eql(0)
   })
 
 })

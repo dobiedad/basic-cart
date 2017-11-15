@@ -1,6 +1,6 @@
 {
   "name": "basic-cart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "basic js shopping cart",
   "main": "cart.js",
   "scripts": {

@@ -12,10 +12,10 @@ class Cart {
       if(itemInCartHasNoQty) {
         this.resetQuantity(product)
       }
-      return Promise.resolve(this.items[product.id].qty++)
+      return this.items[product.id].qty++
     }
     this.items[product.id] = product
-    return Promise.resolve(this.resetQuantity(product))
+    return this.resetQuantity(product)
   }
 
   remove(product) {
@@ -27,7 +27,6 @@ class Cart {
     else if (item) {
       item.qty--
     }
-    return Promise.resolve()
   }
 
   total() {

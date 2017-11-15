@@ -21,7 +21,11 @@ cart.add(product)
 ```JavaScript
 cart.remove(product)
 ```
-#### Get items in cart
+#### Count items
+```JavaScript
+cart.count()
+```
+#### Get items as an array
 ```JavaScript
 cart.getItems()
 ```
