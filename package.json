@@ -2,13 +2,15 @@
   "name": "cart",
   "version": "1.0.0",
   "description": "simple js shopping cart",
-  "main": "index.js",
+  "main": "cart.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha cartSpec.js --compilers js:babel-core/register --watch"
   },
   "author": "dobiedad",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "mocha": "^4.0.1"
   }
