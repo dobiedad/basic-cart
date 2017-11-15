@@ -51,6 +51,13 @@ describe('Shopping Cart',() => {
       })
   })
 
+  it('Returns the items as an array',() => {
+    return Promise.all([cart.add(products.apple),cart.add(products.pear)])
+      .then(() => {
+        expect(cart.returnArrayOfItems().length).to.eql(2)
+      })
+  })
+
   it('Removes a product',() => {
     return Promise.all([cart.add(products.apple),cart.add(products.pear),cart.remove(products.apple)])
       .then(() => {
