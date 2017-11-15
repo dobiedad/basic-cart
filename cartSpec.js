@@ -54,7 +54,7 @@ describe('Shopping Cart',() => {
   it('Returns the items as an array',() => {
     return Promise.all([cart.add(products.apple),cart.add(products.pear)])
       .then(() => {
-        expect(cart.returnArrayOfItems().length).to.eql(2)
+        expect(cart.getItems().length).to.eql(2)
       })
   })
 

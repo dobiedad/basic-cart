@@ -54,7 +54,7 @@ class Cart {
     this.items[product.id].qty = 1
   }
 
-  returnArrayOfItems() {
+  getItems() {
     return Object.values(this.items)
   }
 
