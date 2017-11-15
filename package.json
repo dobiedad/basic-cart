@@ -1,7 +1,7 @@
 {
-  "name": "cart",
+  "name": "basic-cart",
   "version": "1.0.0",
-  "description": "simple js shopping cart",
+  "description": "basic js shopping cart",
   "main": "cart.js",
   "scripts": {
     "test": "mocha cartSpec.js --compilers js:babel-core/register --watch"
