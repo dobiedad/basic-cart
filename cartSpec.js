@@ -33,14 +33,22 @@ describe('Shopping Cart',() => {
     expect(cart.items[products.pear.id].qty).to.eql(1)
   })
 
-  it('Calculates total items in the cart',() => {
+  it('Counts items in the cart',() => {
     cart.add(products.apple)
     cart.add(products.pear)
     cart.add(products.pear)
     expect(cart.count()).to.eql(3)
   })
 
-  it('Calculates total cost for the items in the cart',() => {
+  it('Calculates total for item',() => {
+    cart.add(products.apple)
+    cart.add(products.pear)
+    cart.add(products.pear)
+    expect(cart.totalForProduct(products.pear)).to.eql('5.00')
+  })
+
+
+  it('Calculates total cost for all items',() => {
     cart.add(products.apple)
     cart.add(products.pear)
     cart.add(products.pear)

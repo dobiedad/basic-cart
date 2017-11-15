@@ -33,6 +33,10 @@ cart.getItems()
 ```JavaScript
 cart.total()
 ```
+#### Calculate Total For Product
+```JavaScript
+cart.totalForProduct(product)
+```
 #### Reset Items
 ```JavaScript
 cart.reset()

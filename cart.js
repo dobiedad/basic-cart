@@ -32,11 +32,17 @@ class Cart {
   total() {
     var total = 0
 
-    Object.keys(this.items).map((key) => {
-      total += (Number(this.items[key].price) * Number(this.items[key].qty))
+    Object.keys(this.items).map((item) => {
+      total += Number(this.totalForProduct(this.items[item]))
     });
 
-    return total
+    return Number(total.toFixed(2))
+  }
+
+  totalForProduct(product) {
+    var total = 0
+    total += (Number(product.price) * Number(product.qty))
+    return Number(total).toFixed(2)
   }
 
   count() {
