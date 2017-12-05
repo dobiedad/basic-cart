@@ -5,28 +5,36 @@ class Cart {
   }
 
   add(product) {
-    const itemExistsInCart = this.items[product.id]
+    var cloned = cloneObject(this.items)
+    var clonedProduct = cloneObject(product)
+
+    const itemExistsInCart = cloned[clonedProduct.id]
 
     if(itemExistsInCart){
-      const itemInCartHasNoQty = !this.items[product.id].qty
+      const itemInCartHasNoQty = !cloned[clonedProduct.id].qty
       if(itemInCartHasNoQty) {
-        this.resetQuantity(product)
+        this.resetQuantity(clonedProduct)
       }
-      return this.items[product.id].qty++
+      return cloned[clonedProduct.id].qty++
     }
-    this.items[product.id] = product
-    return this.resetQuantity(product)
+    cloned[clonedProduct.id] = product
+    this.items = cloneObject(cloned)
+    return this.resetQuantity(clonedProduct)
   }
 
   remove(product) {
-    const item = this.items[product.id]
+    var cloned = cloneObject(this.items)
+    var clonedProduct = cloneObject(product)
+
+    const item = cloned[clonedProduct.id]
 
     if(item && item.qty == 1){
-      delete this.items[product.id]
+      delete cloned[clonedProduct.id]
     }
     else if (item) {
-      item.qty--
+      cloned[clonedProduct.id].qty--
     }
+    this.items = cloneObject(cloned)
   }
 
   total() {
@@ -66,6 +74,10 @@ class Cart {
   reset() {
     this.items = {}
   }
+}
+
+function cloneObject(object){
+  return Object.assign({},object)
 }
 
 export { Cart as default }
